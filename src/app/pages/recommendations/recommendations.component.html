@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-expression-recognition"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title>Webcam at Center</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+
+    }
+</style>
+</head>
+<body>
+<app-nav-bar></app-nav-bar>
+      <div class="container">
+            <div>
+                <h2 style="display: flex; justify-content: center;">Recommendations</h2>
+                <table>
+
+                    <tbody  *ngFor="let recomm of recommendationsList">
+                      <tr>
+                        <!-- <td><img src="https://via.placeholder.com/100x100.png?text=Thumbnail" alt="Thumbnail"></td> -->
+                        <td> <iframe width="350" height="256"  [src]="getYouTubeUrl(recomm.youtubeUrl)" title="YouTube video player" frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                  </iframe></td>
+                        <td>{{recomm.title}}</td>
+                        <td>{{recomm.description}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+      </div>
+
+</body>
+</html>

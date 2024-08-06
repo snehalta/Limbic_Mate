@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-expression-recognition"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title>Webcam at Center</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+
+    }
+</style>
+</head>
+<body>
+      <app-nav-bar></app-nav-bar>
+      <div class="container" id="container">
+
+          <section class="chat">
+
+            <div class="messages-chat" id="message-container" >
+
+                <div *ngFor="let msg of messageList">
+                <div class="message text-only" >
+                    <div *ngIf="msg.sender == loggedInUserEmail" class="response">
+                      <p class="text">{{msg.text}}</p>
+                    </div>
+                    <p class="text" *ngIf="msg.sender != loggedInUserEmail">{{msg.text}} </p>
+                </div>
+
+                <p class="time" *ngIf="msg.sender != loggedInUserEmail">{{msg.timeStamp}}</p>
+                <!-- <p class="response-time time" *ngIf="msg.sender == loggedInUserEmail">{{msg.timeStamp}}</p> -->
+              </div>
+                <!-- <p class="time"> 14h58</p> -->
+                <!-- <p class="response-time time"> 15h04</p> -->
+
+            </div>
+
+          </section>
+
+        <div class="footer-chat" >
+          <div class ="icon-container">
+            <i class="icon fa fa-smile-o clickable" style="font-size:25pt;" aria-hidden="true" (click)="toggleEmoji()"></i>
+            <div class="emojis-container" *ngIf="showEmoji">
+              <div class="emojis">
+                <div class="emoji-row" *ngFor="let row of emojiRows">
+                  <div *ngFor="let emoji of emojis.slice(row * 10, (row + 1) * 10)" (click)="selectEmoji(emoji)">{{ emoji }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <input type="text" class="write-message" placeholder="Type your message here" [(ngModel)]="textMessage" name="textMessage" (keypress)="onKeyPress($event) "   />
+            <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true" (click)="sendMessage()"></i>
+          </div>
+      </div>
+</body>
+</html>

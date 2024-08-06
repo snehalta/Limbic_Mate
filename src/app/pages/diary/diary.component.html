@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
+<title>Diary</title>
+</head>
+<body>
+  <app-nav-bar></app-nav-bar>
+<div class="diary-container">
+  <div class="left-panel">
+    <div class="diary-textarea"  [ngClass]="selectedBackgroundClass" (input)="autoSave()" contenteditable="true" (input)="checkFormatting()">{{diaryContent}}</div>
+    <div class="background-dropdown">
+      <select (change)="selectBackground($event)">
+        <option value="background1">Background 1</option>
+        <option value="background2">Background 2</option>
+        <option value="background3">Background 3</option>
+        <option value="background4">Background 4</option>
+        <!-- Add more background options as needed -->
+      </select>
+    </div>
+    <div class="font-dropdown">
+      <select (change)="applyFont($event)">
+        <option value="Arial, Helvetica, sans-serif">Arial</option>
+        <option value="Verdana, Geneva, Tahoma, sans-serif">Verdana</option>
+        <option value="'Times New Roman', Times, serif">Times New Roman</option>
+        <!-- Add more font options as needed -->
+      </select>
+    </div>
+    <div class="font-size-dropdown">
+      <select (change)="applyFontSize($event)">
+        <option value="12">12px</option>
+        <option value="14">14px</option>
+        <option value="16">16px</option>
+        <!-- Add more font size options as needed -->
+      </select>
+    </div>
+    <button class="bold" (click)="toggleBold()"><i class="fas fa-bold"></i></button>
+  <button class="italic" (click)="toggleItalic()"><i class="fas fa-italic"></i></button>
+  <button  class="underline" (click)="toggleUnderline()"><i class="fas fa-underline"></i></button>
+  <button  class="strikethrough" (click)="toggleStrikethrough()"><i class="fas fa-strikethrough"></i></button>
+  <button class="subscript" (click)="toggleSubscript()"><i class="fas fa-subscript"></i></button>
+  <button  class="superscript" (click)="toggleSuperscript()"><i class="fas fa-superscript"></i></button>
+    <button class ="new" (click)="showNewPageModal()">
+      <i class="fas fa-solid fa-plus"></i>
+    </button>
+    <div>
+      <button class ="find" (click)="startSearch()">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+    <div *ngIf="isSearching">
+      <input class="text" type="text" [(ngModel)]="findText" placeholder="Search text...">
+      <button class="search" *ngIf="searchButtonText === 'Search'" (click)="startSearch()">{{searchButtonText}}</button>
+      <button class="next" *ngIf="searchButtonText === 'Next'"  (click)="nextOccurrence()">Next</button>
+      <button class="cancel" (click)="cancelSearch()">Cancel</button>
+    </div>
+
+<!-- Modal for entering new file name (you can use a simple prompt instead if preferred) -->
+<div *ngIf="isModalVisible" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Create New Page</h2>
+    <label for="newFileName">File Name:</label>
+    <input class="text" type="text" placeholder="Enter file name" [(ngModel)]="newFileName"/>
+    <button class="create" (click)="createNewPage()">Create</button>
+  </div>
+</div>
+
+  </div>
+  <div class="right-panel">
+    <h2>Saved Entries</h2>
+    <ul class="saved-entries">
+      <li *ngFor="let entry of savedEntries">
+        <div class="entry-container">
+          <div class="file-name">{{ entry.fileName }}
+            <button class="edit-button" (click)="editEntry(entry)">
+              <i class="fas fa-solid fa-pen"></i>
+             </button>
+             <button class ="delete-button" (click)="deleteEntry(entry)">
+               <i class="fas fa-trash-alt"></i>
+             </button>
+          </div>
+          <div class="date-time">
+            <span>{{ entry.date | date: 'medium' }}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

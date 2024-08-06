@@ -1,0 +1,463 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #c8dcf6;
+  height: 100%;
+
+}
+
+.diary-container {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 20px;
+}
+
+.left-panel {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.right-panel {
+  flex: 1;
+  margin-left: 40px;
+  width: 300px; /* Adjust as needed */
+  padding: 10px;
+}
+
+.right-panel h2 {
+  font-size: 35px;
+  text-align: center;
+  margin-top: -5px;
+}
+
+.diary-textarea {
+  width: 900px;
+  height: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #0056b3;
+  border-radius: 5px;
+  overflow-y: auto;
+  resize: none;
+  background-repeat: no-repeat;
+  margin-top: 40px;
+  background-size: cover;
+}
+.diary-textarea mark {
+  background-color: yellow;
+}
+
+.diary-textarea.custom-background {
+  background-color: var(--selected-background);
+}
+
+
+.save-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 0; /* Adjust margin as needed */
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+
+.saved-entries {
+  list-style-type: none;
+  padding: 0;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.entry-container {
+  margin-bottom: 10px;
+
+}
+
+.file-name {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.date-time {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 40px;
+  margin-top: -10px;
+}
+
+.edit-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+
+.delete-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+.delete-button i {
+  /* Adjust the size of the image or icon */
+  width: 0px;
+  height: 0px;
+  color: #007bff;
+  /* Add margin or padding as needed */
+ /* Adjust this value to adjust the spacing between the image/icon and the button text */
+}
+.edit-button i {
+  /* Adjust the size of the image or icon */
+  width: 40px;
+  height: 40px;
+  color: #007bff;
+  /* Add margin or padding as needed */
+  /* Adjust this value to adjust the spacing between the image/icon and the button text */
+}
+
+.font-dropdown {
+  margin-top: -580px;
+  display: flex;
+  position: absolute;
+}
+
+.font-dropdown select {
+  padding: 7px;
+  font-size: 16px;
+  border: 1px solid #c8dcf6;
+  border-radius: 4px;
+  background-color: #c8dcf6;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.font-dropdown select:hover {
+  border-color: #007bff;
+}
+
+.font-dropdown select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+.font-size-dropdown {
+  margin-top: -580px;
+  display: flex;
+  position: absolute;
+  margin-left: 200px;
+}
+
+.font-size-dropdown select {
+  padding: 7px;
+  font-size: 16px;
+  border: 1px solid #c8dcf6;
+  border-radius: 4px;
+  background-color: #c8dcf6;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.font-size-dropdown select:hover {
+  border-color: #007bff;
+}
+
+.font-size-dropdown select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+.bold-applied {
+  font-weight: bold;
+}
+
+.italic-applied {
+  font-style: italic;
+}
+
+.subscript-applied {
+  vertical-align: sub;
+}
+
+.superscript-applied {
+  vertical-align: super;
+}
+
+.strikethrough-applied {
+  text-decoration: line-through;
+}
+
+.underline-applied {
+  text-decoration: underline;
+}
+.bold{
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -580px;
+  margin-left: 300px;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  top: 10; /* Position from the top of the containing element */
+  left: 0;
+}
+.bold i{
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+}
+.italic{
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -580px;
+  margin-left: 350px;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  top: 10; /* Position from the top of the containing element */
+  left: 0;
+}
+.italic i{
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+}
+.underline{
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -580px;
+  margin-left: 400px;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  top: 10; /* Position from the top of the containing element */
+  left: 0;
+}
+.underline i{
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+}
+
+.strikethrough{
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -580px;
+  margin-left: 450px;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  top: 10; /* Position from the top of the containing element */
+  left: 0;
+}
+.strikethrough i{
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+}
+
+.subscript{
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -580px;
+  margin-left: 500px;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  top: 10; /* Position from the top of the containing element */
+  left: 0;
+}
+.subscript i{
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+}
+
+.superscript{
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -580px;
+  margin-left: 550px;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  top: 10; /* Position from the top of the containing element */
+  left: 0;
+}
+.superscript i{
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+}
+
+.highlighted {
+  background-color: yellow;
+}
+
+.occurrence-count {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+.occurrence-count {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #c8dcf6;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #0056b3;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.occurrence-count {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+.new{
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: -580px;
+  margin-left: 890px;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  top: 10; /* Position from the top of the containing element */
+  left: 0;
+}
+.new i{
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+}
+.find{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: -580px;
+  margin-left: 600px;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  top: 10; /* Position from the top of the containing element */
+  left: 0;
+}
+.find i{
+  width: 20px;
+  height: 20px;
+  color: #007bff;
+}
+.search, .next, .create, .cancel{
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+}
+.search:hover{
+  background-color: #0056b3;
+}
+.next:hover{
+  background-color: #0056b3;
+}
+.create:hover{
+  background-color: #0056b3;
+}
+.cancel:hover{
+  background-color: #0056b3;
+}
+.text{
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 0;
+  border: solid 1px #0056b3;
+  background-color: #c8dcf6;
+}
+.background-dropdown {
+  margin-top: -580px;
+  margin-left: 630px;
+  display: flex;
+  position: absolute; /* Ensure absolute positioning to avoid affecting other elements */
+  }
+
+  .background-dropdown select {
+    padding: 7px;
+    font-size: 16px;
+    border: 1px solid #c8dcf6;
+    border-radius: 4px;
+    background-color: #c8dcf6;
+    color: #007bff;
+    cursor: pointer;
+  }
+
+  .background-dropdown select:hover {
+    border-color: #007bff;
+  }
+
+  .background-dropdown select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  }
+  .background1 {
+    background-color:#c8dcf6;
+  }
+  .background2 {
+    background-color: #f2f6c8;
+  }
+  .background3 {
+    background-color: #f6c8c8;
+  }
+  .background4 {
+    background-color: #f6c8f0;
+  }

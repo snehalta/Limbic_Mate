@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home-page.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Self Help Project</title>
+</head>
+<body>
+  <app-nav-bar></app-nav-bar>
+  <h1>Welcome {{ userDetails?.name || 'Guest' }}!!!</h1>
+  <div class="cards-container">
+    <div class="card">
+      <img
+        class="card__background"
+        src="https://www.softwebsolutions.com/wp-content/uploads/2022/05/Facial-Recognition.jpg"
+        alt="Emotion-Detection Module"
+        width="1920"
+        height="2193"
+      />
+      <div class="card__content">
+        <div class="card__content--container">
+          <h2 class="card__title">Emotion</h2>
+          <p class="card__description">
+            The Module uses face detection to recognize emotions, asks questions,
+            rates responses, and provides measures.
+          </p>
+
+          <button class="card__button" (click)="navigateToEmotionDetection()">Explore</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <img
+        class="card__background"
+        src="https://aicontentfy.com/hubfs/Blog/a%20robot%20and%20stack%20of%20papers%20in%20flat%20illustration%20style%20with%20gradients%20and%20white%20background_compressed%20a5415c23-642b-46de-9a6c-67a42a8a91d7.jpg"
+        alt="Refcommendation Module"
+        width="1920"
+        height="2193"
+      />
+      <div class="card__content">
+        <div class="card__content--container">
+          <h2 class="card__title">Recommendation</h2>
+          <p class="card__description">
+            The Module recommends videos based on the interests users provide during registration.
+          </p>
+
+          <button class="card__button" (click)="navigateRecommendations()">Explore</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <img
+        class="card__background"
+        src="https://static1.bigstockphoto.com/6/5/2/large1500/25627160.jpg"
+        alt="Chat-Room Module"
+        width="1920"
+        height="2193"
+      />
+      <div class="card__content">
+        <div class="card__content--container">
+          <h2 class="card__title">Chat Room</h2>
+          <p class="card__description">
+            The Module provides chat-room where users engage
+            in conversations with multiple participants in an anonymous manner.
+          </p>
+
+          <button class="card__button" (click)="navigateToChatroom()">Explore</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <img
+        class="card__background"
+        src="https://wallpapers.com/images/featured/diary-background-74asl6wzmdwc0m5h.jpg"
+        alt="Diary Module"
+        width="1920"
+        height="2193"
+      />
+      <div class="card__content">
+        <div class="card__content--container">
+          <h2 class="card__title">Diary</h2>
+          <p class="card__description">
+            The module is like a digital diary where you can save, format, and add text content.
+          </p>
+
+          <button class="card__button" (click)="navigateToDiary()">Explore</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

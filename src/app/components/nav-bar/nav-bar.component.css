@@ -1,0 +1,58 @@
+/* nav bar css */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #357ABD;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 17px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+.profile-circle {
+  position: relative;
+  cursor: pointer;
+  padding-right: 20px;
+  padding-top: 5px;
+
+}
+
+.profile-circle img {
+  transition: transform 0.2s ease; /* Add transition for transform property */
+}
+
+/* Add style for clicked animation */
+.profile-circle.clicked img {
+  transform: scale(0.8); /* Change scale factor as needed */
+}
+
+
+
+
+.logo-li {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}

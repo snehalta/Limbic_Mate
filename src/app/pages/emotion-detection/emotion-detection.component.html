@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-expression-recognition"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="emotionScript.js"></script>
+<script src="/node_modules/face-api.js"></script>
+<title>Webcam at Center</title>
+</head>
+<body>
+    <app-nav-bar></app-nav-bar>   <!-- Your emotion detection module content -->
+    <div class="container">
+      <div class="camera-container">
+        <div id="video-container" style="padding-top: 20px;">
+          <video id="video" autoplay muted style="width: 90%; height: 100%; object-fit: cover"></video>
+          <canvas id="canvas"></canvas>
+          <p id="error-message"></p>
+        </div>
+      </div>
+      <div class="question-container">
+          <div *ngFor="let question of selectedQuestions; let i = index">
+              <p>{{ question.questionText }}</p>
+              <div class="rating-container">
+                  <button (click)="recordAnswer(question.questionIndex, rating)"
+                          [ngClass]="{ 'done': question.questionRecordedAnswer === rating }"
+                          class="rating-button"
+                          *ngFor="let rating of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                      {{ rating }}
+                  </button>
+              </div>
+          </div>
+      </div>
+
+      <div *ngIf="checkboxWindowService.isOpen" class="checkbox-window">
+          <h2>Preventive Measures</h2>
+          <form class="checkbox-list">
+              <div *ngFor="let measure of measures; let i = index">
+                  <label>
+                      <input type="checkbox"
+                             (change)="checkboxChanged(i, $event)"
+                             [checked]="checkboxWindowService.checkboxes[i].checked"
+                             [disabled]="checkboxWindowService.checkboxes[i].disabled"
+                             [value]="measure">
+                      {{ measure }}
+                  </label>
+              </div>
+          </form>
+      </div>
+
+      <div class="button-container">
+          <button id="submit" class="button" (click)="submit()" [disabled]="checkboxWindowService.isOpen">Submit</button>
+      </div>
+  </div>

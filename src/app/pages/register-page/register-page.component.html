@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
+    <link rel="stylesheet" href="./register-page.component.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+
+      @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+      }
+
+      @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+      }
+
+      @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+
+      @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+      }
+      </style>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+        </script>
+  </head>
+<body>
+  <div id="snackbar">Some text some message..</div>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+        <!-- <img src="../../../assets/home-slider-img.jpg" alt=""> -->
+        <div class="text">
+          <span class="text-1">Limbic Mate</span>
+          <span class="text-2">Binding data for future!</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">REGISTER</div>
+          <form action="#">
+            <div class="input-boxes">
+
+
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text"  [(ngModel)]="name" name="name" placeholder="Enter your Name" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-id-badge"></i>
+                <input type="text"  [(ngModel)]="email" name="email"  placeholder="Enter your Email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-phone"></i>
+                <input type="text" [(ngModel)]="phone" name="phone"  placeholder="Enter your Phone" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-comments"></i>
+                <select id="primarySelector" name="selectedIntrest" [(ngModel)]="selectedIntrest" (change)="primaryOptionSelected()">
+                  <option *ngFor="let option of primaryIntrests" [value]="option">{{ option }}</option>
+                </select>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-comment"></i>
+                <select id="secondarySelector" name="selectedSubIntrest" [(ngModel)]="selectedSubIntrest" (change)="secondaryOptionSelected()">
+                  <option *ngFor="let option of subIntrestsList" [value]="option">{{ option }}</option>
+                </select>
+              </div>
+
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" [(ngModel)]="password" name="password"  placeholder="Enter your password" required>
+              </div>
+              <div class="text">   <a [routerLink]="['/','loginPage']">Have credentials Login Here!</a></div>
+              <div class="button input-box">
+                <input (click)="register()" type="submit" value="Submit">
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</body>
+</html>

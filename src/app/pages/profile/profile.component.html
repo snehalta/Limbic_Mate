@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Navbar with Profile</title>
+  <link rel="stylesheet" href="profile.component.css">
+</head>
+<body>
+  <app-nav-bar></app-nav-bar>
+  <div class="left-container">
+    <div class="profile">
+      <img src="https://i.pinimg.com/564x/de/6e/8d/de6e8d53598eecfb6a2d86919b267791.jpg" alt="Profile Photo of the user">
+
+      <div class="buttons">
+        <a class="button-link" [ngClass]="{ 'active': activeButton === 'personal' }" (click)="toggleChart('personal')" (click)="toggleChart('personal')">Personal Details</a>
+        <a class="button-link" [ngClass]="{ 'active': activeButton === 'bar' }" (click)="toggleChart('bar')">Reports</a>
+        <a class="button-link" (click)="logout()">Log Out</a>
+      </div>
+    </div>
+  </div>
+  <div class="right-container">
+    <div class="details-container" *ngIf="activePersonal">
+      <h2>Personal Details</h2>
+
+<!-- Display form -->
+<div *ngIf="!Activebutton">
+  <div>
+    <div class="input-box">
+      <p><strong>Name:</strong></p>
+      <span>{{ userDetails?.name }}</span>
+    </div>
+    <div class="input-box">
+      <p><strong>Email:</strong></p>
+      <span>{{ userDetails?.email }}</span>
+    </div>
+
+    <div class="input-box"><p>
+      <strong>Mobile:</strong></p>
+      <span>{{ userDetails?.phone }}</span>
+    </div>
+
+    <div class="input-box">
+      <p><strong>Primary Interest:</strong></p>
+      <span>{{ userDetails?.primaryIntrest }}</span>
+    </div>
+
+    <div class="input-box">
+      <p><strong>Secondary Interest:</strong></p>
+      <span>{{ userDetails?.secondaryIntrest }}</span>
+    </div>
+
+    <!-- Add more personal details here -->
+  </div>
+  <div class="button-containerr" >
+    <a class="button-right" (click)="toggleChart('edit')">
+      {{ buttontext }}
+    </a>
+  </div>
+
+</div>
+
+
+<!-- Edit form -->
+<form *ngIf="Activebutton">
+<div class="input-box">
+  <p><strong>Name:</strong>
+  <input type="text" name="name" [(ngModel)]="username" placeholder="Enter your name " required>
+  </p>
+</div>
+<div class="input-box">
+  <p><strong>Email:</strong></p>
+  <span>{{ userDetails?.email }}</span>
+</div>
+<div class="input-box">
+  <p><strong>Mobile:</strong></p>
+   <span>{{ userDetails?.phone }}</span>
+   </div>
+<div class="input-box">
+  <p><strong>
+    Primary Interest:</strong>
+    <select id="primarySelector" name="selectedIntrest" [(ngModel)]="selectedIntrest"  (change)="primaryOptionSelected()">
+      <option *ngFor="let option of primaryIntrests" [value]="option">{{ option }}</option>
+    </select>
+  </p>
+</div>
+<div class="input-box">
+  <p><strong>
+    Secondary Interest:</strong>
+    <select id="secondarySelector" name="selectedSubIntrest" [(ngModel)]="selectedSubIntrest"  (change)="secondaryOptionSelected()">
+      <option *ngFor="let option of subIntrestsList" [value]="option">{{ option }}</option>
+    </select>
+  </p>
+</div>
+  <!-- Add more personal details here -->
+
+    <div class="button-containerrr" *ngIf="activebutton && buttontext === 'Save Changes'">
+      <a class="button-right" (click)="toggleChart('cancel')">
+        Cancel
+      </a>
+    </div>
+    <div class="button-containerr" >
+      <a class="button-right" (click)="toggleChart('view')">
+        {{ buttontext }}
+      </a>
+    </div>
+</form>
+</div>
+
+
+    <canvas id="emotionCanvas" *ngIf="showBarGraph && activeBarGraph" width="1130" height="600"></canvas>
+    <canvas id="emotionCanvas" *ngIf="showPieChart && activePieChart" width="1130" height="600"></canvas>
+    <div class="button-container" *ngIf="showBarGraph && activeBarGraph">
+      <a class="button-right" (click)="toggleChart('pie')">
+        {{ buttonText }}
+      </a>
+    </div>
+    <div class="button-container" *ngIf="showPieChart && activePieChart">
+      <a class="button-right" (click)="toggleChart('bar')">
+        {{ buttonText }}
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>
